@@ -7,16 +7,10 @@ define("EmersonTest/scripts/Main", [
                 alert("widget Loaded");
                 this.getCSRFToken();
             },
-            updateWidget: function () {
-                dragAndDropComp.showDroppable();
-            }, getDroppedObjectInfo: function (data) {
-                if (data.length > 1) {
-                    alert("Please drop only one object");
-                    return;
-                } else {
-                    myWidget.getCSRFToken(data);
-                }
-            }, getCSRFToken: function (data) {
+            updateWidget: function () {t
+
+            },
+            getCSRFToken: function (data) {
                 // URLs
                 let csrfURL = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/application/CSRF?tenant=OI000186152"
                 let createPartUrl = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/dseng/dseng:EngItem/";
@@ -41,8 +35,46 @@ define("EmersonTest/scripts/Main", [
                         myHeaders[securityContextHeader] = securityContextValue;
                         console.log("csrfToken", csrfToken);
                         console.log("csrfValue", csrfValue);
+                        myWidget.csrfToken = csrfToken;
                     }
                 });
+            },
+            uploadPart: function ()
+            {
+                const importType = document.getElementById("importType").value;
+                const file = document.getElementById("importFile").files[0];
+                if (importType === "part") {
+                    console.log("Importing Part");
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            const text = e.target.result;
+                            const rows = text.split("\n");
+                            rows.shift();
+                            let parts = [];
+                            for (let line of rows) {
+                                let part = line.split(',');
+                                parts.push({
+                                    partType: part[0],
+                                    partName: part[1],
+                                    PartRevision: part[2],
+                                    partDescription: part[3],
+                                    partUnitOFMeasure: part[4],
+                                    uomType: part[5],
+                                    drawingRequired: part[6],
+                                    articleRequired: part[7],
+                                    ongoingSpectionRequired: part[8]
+                                });
+                            }
+                            document.getElementById("status").innerHTML = JSON.stringify(parts);
+                        };
+                        reader.readAsText(file);
+                    }
+                }
+                if(importType === "bom"){
+                    console.log("import bom");
+                }
+                
             }
         }
         widget.myWidget = myWidget;
