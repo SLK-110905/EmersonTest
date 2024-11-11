@@ -1,0 +1,46 @@
+.drag-over {
+    border: 2px dotted rgb(118, 118, 253);
+}
+
+.card-container {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.card-boundary{
+    box-shadow: 5px 5px 10px lightblue;
+    border: 1px solid #a1a0a0;
+    overflow: auto;
+}
+
+.card-content{
+    display: grid;
+    grid-template-columns: repeat(3,400px);
+    row-gap:10px;
+    column-gap: 30px;
+    /* grid-auto-rows: 20px; */
+    /* max-height: 10px; */
+    margin-top: 5px;
+}
+
+.card-content p {
+  overflow: hidden; /* Hide overflowing content */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+  font-size: medium;
+}
+
+.tabulator {
+    width: 99%;
+    margin: auto;
+}
+
+.tableToobarDiv{
+    width: 99%;
+    margin: auto;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 10px; /* Add space between flex items */
+}
