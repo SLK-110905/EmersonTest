@@ -6,6 +6,7 @@ define("EmersonTest/scripts/Main", [
             onLoad: function () {
                 alert("widget Loaded");
                 this.getCSRFToken();
+                this.uploadPart();
             },
             updateWidget: function () {t
 
