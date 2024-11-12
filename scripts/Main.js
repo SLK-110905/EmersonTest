@@ -2,7 +2,7 @@ define("EmersonTest/scripts/Main", [
     "DS/WAFData/WAFData",
 ],
     function (WAFData) {
-        var myWidget = {
+        let myWidget = {
             onLoad: function () {
                 alert("widget has been Loaded");
                 this.getCSRFToken();
@@ -27,9 +27,9 @@ define("EmersonTest/scripts/Main", [
                     },
                     timeout: 150000,
                     type: "json",
-                    onComplete: function (dataResp2, headerResp2) {
-                        const csrfToken = dataResp2.csrf.name;
-                        const csrfValue = dataResp2.csrf.value;
+                    onComplete: function (res, headerRes) {
+                        const csrfToken = res.csrf.name;
+                        const csrfValue = res.csrf.value;
                         const securityContextHeader = 'SecurityContext';
                         const securityContextValue = encodeURIComponent(widget.getValue("ctx"));
                         const myHeaders = new Object();
@@ -37,7 +37,8 @@ define("EmersonTest/scripts/Main", [
                         myHeaders[securityContextHeader] = securityContextValue;
                         console.log("csrfToken", csrfToken);
                         console.log("csrfValue", csrfValue);
-                        myWidget.csrfToken = csrfToken;
+                        console.log("My widget"+myWidget);
+                        //myWidget.csrfToken = csrfValue;
                     }
                 });
             },
