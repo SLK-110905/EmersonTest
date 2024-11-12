@@ -37,8 +37,8 @@ define("EmersonTest/scripts/Main", [
                         myHeaders[securityContextHeader] = securityContextValue;
                         console.log("csrfToken", csrfToken);
                         console.log("csrfValue", csrfValue);
-                        console.log("My widget"+myWidget);
-                        //myWidget.csrfToken = csrfValue;
+                        myWidget.csrfToken = csrfValue;
+                        console.log("myWidget.csrfToken", myWidget.csrfToken);
                     }
                 });
             },
