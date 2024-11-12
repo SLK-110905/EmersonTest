@@ -67,6 +67,7 @@ define("EmersonTest/scripts/Main", [
                                     ongoingSpectionRequired: part[8]
                                 });
                             }
+                            console.log(parts);
                             document.getElementById("status").innerHTML = JSON.stringify(parts);
                         };
                         reader.readAsText(file);
