@@ -4,7 +4,7 @@ define("EmersonTest/scripts/Main", [
     function (WAFData) {
         var myWidget = {
             onLoad: function () {
-                alert("widget Loaded");
+                alert("widget has been Loaded");
                 this.getCSRFToken();
                 //alert("csrf token received"+csrfToken);
                 document.getElementById("importbtn").addEventListener("click", this.uploadPart);
