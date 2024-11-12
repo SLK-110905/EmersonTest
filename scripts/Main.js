@@ -6,6 +6,7 @@ define("EmersonTest/scripts/Main", [
             onLoad: function () {
                 alert("widget Loaded");
                 this.getCSRFToken();
+                alert("csrf token received"+csrfToken);
                 document.getElementById("importbtn").addEventListener("click", this.uploadPart);
             },
             updateWidget: function () {t
