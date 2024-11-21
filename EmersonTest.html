@@ -14,9 +14,6 @@
     <link href="css/main.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
     <!--React Testing-->
-    <script>
-        require
-    </script>
     <title>Revision Float</title>
 
 </head>
@@ -24,6 +21,19 @@
 <body>
     <div id="root"></div>
 <script type="text/babel">
-    require(['EmersonTest/scripts/Main'])
+    require(['EmersonTest/scripts/Main'],
+            function(
+                myWidget
+            ) {
+                widget.addEvents({
+                    onLoad: function() {
+                        myWidget.onLoad();
+                    },
+                    onRefresh: function() {
+                        myWidget.updateWidget();
+                    }
+
+                });
+            });
 </script>
 </html>
