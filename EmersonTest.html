@@ -13,47 +13,44 @@
     <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
-
-    
-
+    <!--React Testing-->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <title>Revision Float</title>
-    
-
-    <script type="text/javascript">
-        require(
-            ['EmersonTest/scripts/Main'],
-            function(
-                myWidget
-            ) {
-                widget.addEvents({
-                    onLoad: function() {
-                        myWidget.onLoad();
-                    },
-                    onRefresh: function() {
-                        myWidget.updateWidget();
-                    }
-
-                });
-            });
-    </script>
 
 </head>
 
 <body>
-<div class="center">
-    <h1>
-        <i class="fas fa-cloud-upload-alt"></i>
-        Import
-    </h1>
-</div>
-<div class="center">
-<select name="importType" id="importType">
-    <option value="part">Part</option>
-    <option value="bom">BOM</option>
-</select>
-<input type="file" id="importFile" name="file" accept=".csv">
-<button id="importbtn">Upload</button>
-<div id="status"></div>
-</div>
+    <div id="root"></div>
+    <div class="center">
+        <h1>
+            <i class="fas fa-cloud-upload-alt"></i>
+            Import
+        </h1>
+    </div>
+    <div class="center">
+        <select name="importType" id="importType">
+            <option value="part">Part</option>
+            <option value="bom">BOM</option>
+        </select>
+        <input type="file" id="importFile" name="file" accept=".csv">
+        <button id="importbtn">Upload</button>
+        <div id="status"></div>
+    </div>
 </body>
+<script type="text/babel">
+    // Your React component code goes here
+    const App = () => {
+        return (
+            <div>
+                <h1>Hello, React from CDN!</h1>
+                <p>This is a simple React app running through CDN.</p>
+            </div>
+        );
+    };
+
+    // Render the React component to the DOM
+    ReactDOM.render(<App />, document.getElementById('root'));
+</script>
 </html>
