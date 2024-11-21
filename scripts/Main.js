@@ -7,6 +7,9 @@ require.config({
 });
 define("EmersonTest/scripts/Main", [
     "DS/WAFData/WAFData",
+    "reactdomproduction",
+    "reactproduction",
+    "reactbabel"
 ],
     function (WAFData) {
         let myWidget = {
