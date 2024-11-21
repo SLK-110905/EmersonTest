@@ -14,9 +14,9 @@
     <link href="css/main.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
     <!--React Testing-->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script>
+        require
+    </script>
     <title>Revision Float</title>
 
 </head>
@@ -24,17 +24,6 @@
 <body>
     <div id="root"></div>
 <script type="text/babel">
-    // Your React component code goes here
-    const App = () => {
-        return (
-            <div>
-                <h1>Hello, React from CDN!</h1>
-                <p>This is a simple React app running through CDN.</p>
-            </div>
-        );
-    };
-
-    // Render the React component to the DOM
-    ReactDOM.render(<App />, document.getElementById('root'));
+    require(['EmersonTest/scripts/Main'])
 </script>
 </html>
