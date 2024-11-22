@@ -7,9 +7,9 @@ require.config({
 });
 define("EmersonTest/scripts/Main", [
     "DS/WAFData/WAFData",
-    "reactdomproduction",
-    "reactproduction",
-    "reactbabel"
+    "EmersonTest/scripts/Main/reactdomproduction",
+    "EmersonTest/scripts/Main/reactproduction",
+    "EmersonTest/scripts/Main/reactbabel"
 ],
     function (WAFData) {
         let myWidget = {
@@ -31,7 +31,6 @@ define("EmersonTest/scripts/Main", [
             updateWidget: function () {
 
             },
-           
         }
         widget.myWidget = myWidget;
         return myWidget;
