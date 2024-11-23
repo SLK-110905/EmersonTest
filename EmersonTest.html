@@ -1,3 +1,4 @@
+<html>
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="AS" />
@@ -7,18 +8,15 @@
     <meta name="autoRefresh" content="0" />
     <meta name="strictMode" content="false" />
     <script type="text/javascript" src="../AmdLoader/AmdLoader.js"></script>
-    <!-- Load UWA environment -->
     <link rel="stylesheet" type="text/css" href="../c/UWA/assets/css/standalone.css" />
     <script type="text/javascript" src="../c/UWA/js/UWA_Standalone_Alone.js"></script>
     <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <!--React Testing-->
     <title>Revision Float</title>
-
 </head>
-
 <body>
     <div id="root"></div>
+</body>
 <script type="text/javascript">
     require(['EmersonTest/scripts/Main'],
             function(
@@ -26,7 +24,7 @@
             ) {
                 widget.addEvents({
                     onLoad: function() {
-                        alert("hello");
+                        alert("debug start 1")
                         myWidget.onLoad();
                     },
                     onRefresh: function() {
