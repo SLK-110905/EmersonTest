@@ -1,10 +1,11 @@
 require.config({
     paths: {
         'react': 'https://unpkg.com/react/umd/react.development',
-        'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development'
+        'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development',
+        'babel':'https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js'
     }
 });
-define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData","react-dom","react"], function (WAFData) {
+define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData",'babel',"react-dom","react"], function (WAFData) {
 let myWidget = {
     onLoad: function () {
     alert("debug 2");
