@@ -7,6 +7,7 @@ require.config({
 define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData"], function (WAFData) {
 let myWidget = {
     onLoad: function () {
+    alert("debug 2");
     const App = () => {
         return (
         <div>
