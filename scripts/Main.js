@@ -4,7 +4,7 @@ require.config({
         'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development'
     }
 });
-define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData"], function (WAFData) {
+define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData","react-dom","react"], function (WAFData) {
 let myWidget = {
     onLoad: function () {
     alert("debug 2");
