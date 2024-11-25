@@ -1,3 +1,9 @@
+require.config({
+    paths: {
+        'react': 'https://unpkg.com/react/umd/react.development',
+        'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development'
+    }
+});
 define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData"], function (WAFData) {
 let myWidget = {
     onLoad: function () {
@@ -11,8 +17,7 @@ let myWidget = {
     };
 
       // Create a root and render the React component to the DOM
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<App />);
+      ReactDOM.render(React.createElement(App), document.getElementById('root'));
     },
     updateWidget: function () {},
 };
