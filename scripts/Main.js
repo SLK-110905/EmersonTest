@@ -5,7 +5,7 @@ require.config({
         'babel':'https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js'
     }
 });
-define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData",'babel',"react-dom","react"], function (WAFData,ReactDOM,react) {
+define("EmersonTest/scripts/Main", ["DS/WAFData/WAFData",'babel',"react-dom","react"], function (WAFData,ReactDOM,React) {
 let myWidget = {
     onLoad: function () {
     alert("debug 2");
