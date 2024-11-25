@@ -10,7 +10,7 @@ let myWidget = {
     onLoad: function () {
     alert("debug 2");
       // Create a root and render the React component to the DOM
-      ReactDOM.render(React.createElement("<h1>Hello from react"), document.getElementById('root'));
+      ReactDOM.render(React.createElement("<h1>Hello from react</h1>"), document.getElementById('root'));
     },
     updateWidget: function () {},
 };
