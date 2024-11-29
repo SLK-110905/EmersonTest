@@ -48,9 +48,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     },
                     enter: function () {
                         console.log("Enter");
-                        widget.body.innerHTML=`<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>`;
+                        widget.innerHTML=``;
                         if (!droppableContainer.classList.contains("drag-over")) {
                             droppableContainer.classList.add("drag-over");
                         }
