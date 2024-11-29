@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:widget="http://www.netvibes.com/ns/">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="AS" />
@@ -8,24 +10,34 @@
     <meta name="autoRefresh" content="0" />
     <meta name="strictMode" content="false" />
     <script type="text/javascript" src="../AmdLoader/AmdLoader.js"></script>
+    <!-- Load UWA environment -->
     <link rel="stylesheet" type="text/css" href="../c/UWA/assets/css/standalone.css" />
     <script type="text/javascript" src="../c/UWA/js/UWA_Standalone_Alone.js"></script>
+
+    <!-- Materialize CSS -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"> -->
+    <!-- UWA/Class/View, Model and Collection will be loaded dynamically -->
+    
+    <!-- Bootstrap CSS -->
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <!-- Tabulator CSS -->
+    
     <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <title>Emerson test</title>
-</head>
-<body>
-    <div id="root"></div>
-    <h1>Debug 3</h1>
-</body>
-<script type="text/javascript">
-    require(['EmersonTest/scripts/Main'],
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
+
+    
+
+    <title>Revision Float</title>
+    
+
+    <script type="text/javascript">
+        require(
+            ['EmersonTest/scripts/Main'],
             function(
                 myWidget
             ) {
                 widget.addEvents({
                     onLoad: function() {
-                        alert("debug start 2")
                         myWidget.onLoad();
                     },
                     onRefresh: function() {
@@ -34,5 +46,23 @@
 
                 });
             });
-</script>
+
+           
+    </script>
+
+</head>
+
+<body>
+<div id="HhtmlRoot">Hello World...</div>
+
+<!-- Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="path/to/your/card.js"></script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,82 @@
+.drag-over {
+    border: 2px dotted rgb(118, 118, 253);
+}
+
+.card-container {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e4e3;
+}
+
+/* .card-boundary{
+    box-shadow: 5px 5px 10px lightblue;
+    border: 1px solid #a1a0a0;
+    overflow: auto;
+} */
+
+.card-content{
+    display: flex;
+    margin-top: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-content p {
+  overflow: hidden; /* Hide overflowing content */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+  font-size: medium;
+}
+
+.tabulator {
+    width: 99%;
+    margin: auto;
+}
+
+.tableToobarDiv{
+    width: 99%;
+    margin: auto;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 10px; /* Add space between flex items */
+}
+
+/* Munish style added */
+.card-content p:first-child {
+    color: #77797c;
+    font-size: 20px;
+    font-family: Arial;
+    line-height: 1.8em;
+    width: 100% !important;
+}
+.card-content p{
+    font-weight: 500;
+    /* color: #368ec4; */
+    color: #77797c;
+    user-select: text;
+    cursor: text;
+    font-family: Arial;
+    font-size: 12px;
+    margin-bottom: 0;
+    width: 203px !important;
+    margin-bottom: 5px;
+}
+.card-content p strong{
+    font-weight: 900;
+}
+.tabulator .tabulator-header .tabulator-col{
+    background: #f1f1f1;
+}
+
+.tabulator{
+    border: none !important;
+}
+.tabulator-row .tabulator-cell.tabulator-row-header{
+    background: #f1f1f1;
+}
+/* .tabulator-table * {
+    border-color: #b4b6ba !important;
+} */
