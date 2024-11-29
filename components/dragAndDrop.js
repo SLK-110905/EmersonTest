@@ -42,6 +42,11 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                 DataDragAndDrop.droppable(droppableContainer, {
                     drop: function (data) {
                         console.log("data", data)
+                        widget.body.innerHTML = `<div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>`;
                         droppableContainer.classList.remove("drag-over");
                         var dropedObject = JSON.parse(data);
                         dragAndDropComp.getDroppedObjectInfo(dropedObject.data.items);
