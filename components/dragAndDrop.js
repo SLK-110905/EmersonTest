@@ -199,8 +199,8 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                 console.log("filteredData", filteredData);
 
                 dragAndDropComp.setDisplayNames(filteredData).then((updatedData) => {
-                    //card.showCard(updatedData)
-                    alert("card.show() Bypassed");
+                    card.showCard(updatedData)
+                    //alert("card.show() Bypassed");
                 });
                 ;
                 dragAndDropComp.dataObject = dataResp3.member[0];

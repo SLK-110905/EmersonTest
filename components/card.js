@@ -9,6 +9,7 @@ define("EmersonTest/components/card", ["DS/DataDragAndDrop/DataDragAndDrop","css
 
     var card = {
         showCard: function (data) {
+            console.log("Card Data"+data);
             // alert("In ON load 4");
 
             var metadata = {
@@ -56,6 +57,7 @@ define("EmersonTest/components/card", ["DS/DataDragAndDrop/DataDragAndDrop","css
             }
 
             cardHTML += '</div></div></div></div>';
+            console.log(cardHTML);
 
             widget.body.innerHTML = cardHTML;
 
