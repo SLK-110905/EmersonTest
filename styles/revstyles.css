@@ -81,5 +81,5 @@
     border-color: #b4b6ba !important;
 } */
 .spinner-border {
-    border-width: 0.5rem; /* Increase the border thickness */
+    border-width: 2rem; /* Increase the border thickness */
 }
