@@ -48,7 +48,6 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     },
                     enter: function () {
                         console.log("Enter");
-                        widget.innerHTML=``;
                         if (!droppableContainer.classList.contains("drag-over")) {
                             droppableContainer.classList.add("drag-over");
                         }
@@ -200,7 +199,8 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                 console.log("filteredData", filteredData);
 
                 dragAndDropComp.setDisplayNames(filteredData).then((updatedData) => {
-                    card.showCard(updatedData)
+                    //card.showCard(updatedData)
+                    alert("card.show() Bypassed");
                 });
                 ;
                 dragAndDropComp.dataObject = dataResp3.member[0];
@@ -360,7 +360,6 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     } else {
                         collabSpaceValues = rawData.collabspace;
                     }
-
                     let patternCollab = "pattern=" + collabSpaceValues;
                     // getCollabSpaceListInfoURL += "?" + patternCollab;
                     dragAndDropComp.getDisplayNames(getCollabSpaceListInfoURL, patternCollab).then((dataRespCollab) => {

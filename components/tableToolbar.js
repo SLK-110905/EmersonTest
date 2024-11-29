@@ -24,7 +24,6 @@ define("EmersonTest/components/tableToolbar", ["DS/DataDragAndDrop/DataDragAndDr
             data.forEach(button => {
                 toobarHTML += `<button class="btn btn-primary" ${button.style ? `style="${button.style}"` : ''}>${button.buttonLabel}</button>`;
             });
-           
 
             var tableToobarDiv = document.createElement('div');
             tableToobarDiv.id = "tableToobarDiv";
