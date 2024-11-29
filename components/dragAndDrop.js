@@ -43,7 +43,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     drop: function (data) {
                         console.log("data", data)
                         widget.body.innerHTML = `<div class="d-flex justify-content-center">
-                        <div class="spinner-border" role="status" style="width: 50rem; height: 50rem;">
+                        <div class="spinner-border" role="status" style="width: 10rem; height: 10rem;">
                         <span class="sr-only">Loading...</span>
                         </div>
                     </div>`;
