@@ -42,6 +42,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                 DataDragAndDrop.droppable(droppableContainer, {
                     drop: function (data) {
                         console.log("data", data)
+                        //Loading Icon shows when the object is dropped
                         widget.body.innerHTML = `<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
                         <!-- Large spinner with primary color -->
                         <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
