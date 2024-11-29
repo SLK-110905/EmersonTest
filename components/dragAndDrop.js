@@ -43,12 +43,14 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     drop: function (data) {
                         console.log("data", data)
                         droppableContainer.classList.remove("drag-over");
-
                         var dropedObject = JSON.parse(data);
                         dragAndDropComp.getDroppedObjectInfo(dropedObject.data.items);
                     },
                     enter: function () {
                         console.log("Enter");
+                        widget.innerHTML=`<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>`;
                         if (!droppableContainer.classList.contains("drag-over")) {
                             droppableContainer.classList.add("drag-over");
                         }
@@ -360,7 +362,6 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     } else {
                         collabSpaceValues = rawData.collabspace;
                     }
-                   
 
                     let patternCollab = "pattern=" + collabSpaceValues;
                     // getCollabSpaceListInfoURL += "?" + patternCollab;
