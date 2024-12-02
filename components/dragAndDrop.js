@@ -192,7 +192,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     }
                 });
             }, showDroppedObjDetails: function (dataResp3, valuesToDisplay) {
-                commonServices.getStateValue(dataResp3.member[0].id).then((stateValue) => {
+                dragAndDropComp.getStateValue(dataResp3.member[0].id).then((stateValue) => {
                     console.log("stateValue", stateValue);
                 let droppedData = {};
                 if (dataResp3.hasOwnProperty("member")) {
