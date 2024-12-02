@@ -180,8 +180,9 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     }
                 });
             }, showDroppedObjDetails: function (dataResp3, valuesToDisplay) {
-                dragAndDropComp.getStateValue(dataResp3.member[0].id).then((stateValue) => {
-                    console.log("stateValue", stateValue);
+                dragAndDropComp.getDisplayValueForPhysicalProduct(dataResp3.member[0].id).then((displayValue) => {
+                    dataResp3.member[0].state = displayValue.state;
+                    dataResp3.member[0].type = displayValue.type;
                 let droppedData = {};
                 if (dataResp3.hasOwnProperty("member")) {
                     droppedData = dataResp3.member[0];
@@ -530,22 +531,21 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     });
                 });
             },
-            getStateValue: function(partId)
+            getDisplayValueForPhysicalProduct: function(partId)
             {
                  //For getting display Name for Maturity State
-                console.log("Inside getStateValue: ");
+                console.log("Inside getDisplayValueForPhysicalProduct: ");
                 return new Promise((onMyResolve,onMyFailure) => {
                 WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents/${partId}`, {
                     method: "GET",
                     type: "json",
                     timeout:15000,
-                    onComplete: function(forstateRes, headerforStateRes) {
-                        console.log("forstateRes"+forstateRes);
-                        onMyResolve(forstateRes);
+                    onComplete: function(res, headerRes) {
+                        console.log("Response"+res);
+                        onMyResolve({state:res.data[0].dataelements.stateNLS,type:res.data[0].dataelements.typeNLS});
                     },
-                    onFailure: function(errorResp) {
-                        onMyFailure(errorResp);
-                        console.log("errorResp--------", errorResp);
+                    onFailure: function(errorRes) {
+                        onMyFailure(errorRes);
                     }
             });
             }
