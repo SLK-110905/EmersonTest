@@ -537,6 +537,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                 return new Promise((onMyResolve,onMyFailure) => {
                 WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents/${partId}`, {
                     method: "GET",
+                    type: "json",
                     timeout:15000,
                     onComplete: function(forstateRes, headerforStateRes) {
                         console.log("forstateRes"+forstateRes);
