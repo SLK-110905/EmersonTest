@@ -121,6 +121,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                             timeout: 150000,
                             type: "json",
                             onComplete: function (dataResp3, headerResp3) {
+                        
                                 console.log("dataResp3", dataResp3);
 
                                 let droppedObjType = "";
@@ -191,6 +192,8 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     }
                 });
             }, showDroppedObjDetails: function (dataResp3, valuesToDisplay) {
+                commonServices.getStateValue(dataResp3.member[0].id).then((stateValue) => {
+                    console.log("stateValue", stateValue);
                 let droppedData = {};
                 if (dataResp3.hasOwnProperty("member")) {
                     droppedData = dataResp3.member[0];
@@ -248,6 +251,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                         droppableContainer.classList.remove("drag-over");
                     },
                 });
+            });
             }, getAllRevisions: function (data) {
 
                 let finalURL = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/dslc/version/getGraph";
@@ -537,7 +541,24 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                         }
                     });
                 });
+            },
+            getStateValue: function(partId)
+            {
+                 //For getting display Name for Maturity State
+                return new Promise((resolve) => {
+                WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents${partId}`, {
+                    method: "GET",
+                    timeout:15000,
+                    onComplete: function(forstateRes, headerforStateRes) {
+                        console.log("forstateRes"+JSON.stringify(forstateRes));
+                        resolve(forstateRes);
+                    },
+                    onFailure: function(errorResp) {
+                        console.log("errorResp--------", errorResp);
+                    }
+            });
             }
+        )}
         }
         widget.dragAndDropComp = dragAndDropComp;
         return dragAndDropComp;
