@@ -166,18 +166,6 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                                                 dataResp3.member[0].cadorigin = "3DExperience";
                                                 dragAndDropComp.showDroppedObjDetails(dataResp3, valuesToDisplayItem);
                                             }
-                                            //For getting display Name for Maturity State
-                                            WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents/664E5B0AC0352200671379240003616B`, {
-                                                method: "GET",
-                                                timeout:15000,
-                                                onComplete: function(forstateRes, headerforStateRes) {
-                                                    console.log("forstateRes"+JSON.stringify(forstateRes));
-                                                    
-                                                },
-                                                onFailure: function(errorResp) {
-                                                    console.log("errorResp--------", errorResp);
-                                                }
-                                        });
                                         },
                                         onFailure: function (errorResp) {
                                             console.log("errorResp--------", errorResp);
@@ -545,7 +533,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
             getStateValue: function(partId)
             {
                  //For getting display Name for Maturity State
-                 console.log("Inside getStateValue: ");
+                console.log("Inside getStateValue: ");
                 return new Promise((onMyResolve,onMyFailure) => {
                 WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents${partId}`, {
                     method: "GET",
