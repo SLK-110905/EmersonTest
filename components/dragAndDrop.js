@@ -121,7 +121,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                             timeout: 150000,
                             type: "json",
                             onComplete: function (dataResp3, headerResp3) {
-                        
+
                                 console.log("dataResp3", dataResp3);
 
                                 let droppedObjType = "";
@@ -179,69 +179,69 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
 
                     }
                 });
-            }, showDroppedObjDetails: function (dataResp3, valuesToDisplay) {
+            },
+            showDroppedObjDetails: function (dataResp3, valuesToDisplay) {
                 dragAndDropComp.getDisplayValueForPhysicalProduct(dataResp3.member[0].id).then((displayValue) => {
-                    console.log("displayValue For Physical Product", displayValue);
                     dataResp3.member[0].state = displayValue.state;
                     dataResp3.member[0].type = displayValue.type;
-                let droppedData = {};
-                if (dataResp3.hasOwnProperty("member")) {
-                    droppedData = dataResp3.member[0];
-                } else if (dataResp3.hasOwnProperty("data")) {
-                    droppedData = dataResp3.data[0];
-                }
+                    let droppedData = {};
+                    if (dataResp3.hasOwnProperty("member")) {
+                        droppedData = dataResp3.member[0];
+                    } else if (dataResp3.hasOwnProperty("data")) {
+                        droppedData = dataResp3.data[0];
+                    }
 
-                var filteredData = {};
-                function extractValues(obj, keys) {
-                    let result = {};
-                    for (let key in obj) {
-                        if (obj.hasOwnProperty(key)) {
-                            if (keys.includes(key)) {
-                                result[key] = obj[key];
-                            } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-                                let nestedResult = extractValues(obj[key], keys);
-                                if (Object.keys(nestedResult).length > 0) {
-                                    result = { ...result, ...nestedResult };
+                    var filteredData = {};
+                    function extractValues(obj, keys) {
+                        let result = {};
+                        for (let key in obj) {
+                            if (obj.hasOwnProperty(key)) {
+                                if (keys.includes(key)) {
+                                    result[key] = obj[key];
+                                } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+                                    let nestedResult = extractValues(obj[key], keys);
+                                    if (Object.keys(nestedResult).length > 0) {
+                                        result = { ...result, ...nestedResult };
+                                    }
                                 }
                             }
                         }
+                        return result;
                     }
-                    return result;
-                }
 
-                filteredData = extractValues(droppedData, valuesToDisplay);
-                console.log("filteredData", filteredData);
+                    filteredData = extractValues(droppedData, valuesToDisplay);
+                    console.log("filteredData", filteredData);
 
-                dragAndDropComp.setDisplayNames(filteredData).then((updatedData) => {
-                    card.showCard(updatedData)
-                    //alert("card.show() Bypassed");
+                    dragAndDropComp.setDisplayNames(filteredData).then((updatedData) => {
+                        card.showCard(updatedData)
+                        //alert("card.show() Bypassed");
+                    });
+                    ;
+                    dragAndDropComp.dataObject = dataResp3.member[0];
+                    dragAndDropComp.getAllRevisions(dataResp3.member[0]);
+                    // dragAndDropComp.getAllWhereUsedOfRevison(dataResp3.member[0]);
+
+                    var droppableContainer = widget.body.querySelector('.card-container');
+
+                    DataDragAndDrop.droppable(droppableContainer, {
+                        drop: function (data) {
+                            console.log("data", data)
+                            droppableContainer.classList.remove("drag-over");
+
+                            var dropedObject = JSON.parse(data);
+                            dragAndDropComp.getDroppedObjectInfo(dropedObject.data.items);
+
+                        },
+                        enter: function () {
+                            console.log("Enter");
+                            droppableContainer.classList.add("drag-over");
+                        },
+                        leave: function () {
+                            console.log("leave");
+                            droppableContainer.classList.remove("drag-over");
+                        },
+                    });
                 });
-                ;
-                dragAndDropComp.dataObject = dataResp3.member[0];
-                dragAndDropComp.getAllRevisions(dataResp3.member[0]);
-                // dragAndDropComp.getAllWhereUsedOfRevison(dataResp3.member[0]);
-
-                var droppableContainer = widget.body.querySelector('.card-container');
-
-                DataDragAndDrop.droppable(droppableContainer, {
-                    drop: function (data) {
-                        console.log("data", data)
-                        droppableContainer.classList.remove("drag-over");
-
-                        var dropedObject = JSON.parse(data);
-                        dragAndDropComp.getDroppedObjectInfo(dropedObject.data.items);
-
-                    },
-                    enter: function () {
-                        console.log("Enter");
-                        droppableContainer.classList.add("drag-over");
-                    },
-                    leave: function () {
-                        console.log("leave");
-                        droppableContainer.classList.remove("drag-over");
-                    },
-                });
-            });
             }, getAllRevisions: function (data) {
 
                 let finalURL = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/dslc/version/getGraph";
@@ -332,7 +332,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                             .filter(item => item.owner !== undefined)
                             .map(item => item.owner)
                             .join(', ');
-                            isArrayBeingUpdated = true;
+                        isArrayBeingUpdated = true;
                     } else if (typeof rawData === 'object' && rawData !== null) {
                         ownerValues = rawData.owner;
                     }
@@ -369,9 +369,9 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     let collabSpaceValues = "";
                     if (isArrayBeingUpdated) {
                         collabSpaceValues = rawData
-                        .filter(item => item.collabspace !== undefined)
-                        .map(item => item.collabspace)
-                        .join(', ');
+                            .filter(item => item.collabspace !== undefined)
+                            .map(item => item.collabspace)
+                            .join(', ');
                     } else {
                         collabSpaceValues = rawData.collabspace;
                     }
@@ -391,7 +391,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                         } else {
                             rawData.collabspace = jsonDataRespCollab.collabspaces[0].title;
                         }
-                        
+
                         resolve(rawData);
                     });
                 });
@@ -490,66 +490,72 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                         timeout: 150000,
                         type: "json",
                         onComplete: function (dataRespParent, headerRespParent) {
-                            let valuesToDisplay = ["id", "title", "description", "type", "revision", "state", "owner", "organization", "collabspace", "partNumber", "cadorigin"];
+                            console.log("dataRespParent", dataRespParent);
+                            dragAndDropComp.getDisplayValueForPhysicalProduct().then((valuesToDisplayForPhysicalProduct) => {
+                                dataRespParent.member[0].state = valuesToDisplayForPhysicalProduct.state;
+                                dataRespParent.member[0].type = valuesToDisplayForPhysicalProduct.type;
+                                let valuesToDisplay = ["id", "title", "description", "type", "revision", "state", "owner", "organization", "collabspace", "partNumber", "cadorigin"];
 
-                            // if (dragAndDropComp.isCADObject) {
-                            //     valuesToDisplay.push("cadorigin");
-                            // }
+                                // if (dragAndDropComp.isCADObject) {
+                                //     valuesToDisplay.push("cadorigin");
+                                // }
 
-                            droppedData = dataRespParent.member[0];
-                            if (!dragAndDropComp.isCADObject) {
-                                droppedData.cadorigin = "3DExperience";
-                            }
-                            var filteredData = {};
-                            function extractValues(obj, keys) {
-                                let result = {};
-                                for (let key in obj) {
-                                    if (obj.hasOwnProperty(key)) {
-                                        if (keys.includes(key)) {
-                                            result[key] = obj[key];
-                                        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-                                            let nestedResult = extractValues(obj[key], keys);
-                                            if (Object.keys(nestedResult).length > 0) {
-                                                result = { ...result, ...nestedResult };
+                                droppedData = dataRespParent.member[0];
+
+                                if (!dragAndDropComp.isCADObject) {
+                                    droppedData.cadorigin = "3DExperience";
+                                }
+                                var filteredData = {};
+                                function extractValues(obj, keys) {
+                                    let result = {};
+                                    for (let key in obj) {
+                                        if (obj.hasOwnProperty(key)) {
+                                            if (keys.includes(key)) {
+                                                result[key] = obj[key];
+                                            } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+                                                let nestedResult = extractValues(obj[key], keys);
+                                                if (Object.keys(nestedResult).length > 0) {
+                                                    result = { ...result, ...nestedResult };
+                                                }
                                             }
                                         }
                                     }
+                                    return result;
                                 }
-                                return result;
-                            }
 
-                            filteredData = extractValues(droppedData, valuesToDisplay);
-                            console.log("filteredData", filteredData);
+                                filteredData = extractValues(droppedData, valuesToDisplay);
+                                console.log("filteredData", filteredData);
 
-                            // Add filteredData to the object in dragAndDropComp.tableData where parentID matches the id in filteredData
-                            dragAndDropComp.tableData.forEach(item => {
-                                if (item.parentID === filteredData.id) {
-                                    Object.assign(item, filteredData);
-                                }
+                                // Add filteredData to the object in dragAndDropComp.tableData where parentID matches the id in filteredData
+                                dragAndDropComp.tableData.forEach(item => {
+                                    if (item.parentID === filteredData.id) {
+                                        Object.assign(item, filteredData);
+                                    }
+                                });
+                                resolve();
                             });
-                            resolve();
                         }
                     });
                 });
             },
-            getDisplayValueForPhysicalProduct: function(partId)
-            {
-                 //For getting display Name for Maturity State
+            getDisplayValueForPhysicalProduct: function (partId) {
+                //For getting display Name for Maturity State
                 console.log("Inside getDisplayValueForPhysicalProduct: ");
-                return new Promise((onMyResolve,onMyFailure) => {
-                WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents/${partId}`, {
-                    method: "GET",
-                    type: "json",
-                    timeout:15000,
-                    onComplete: function(res, headerRes) {
-                        onMyResolve({state:res.data[0].dataelements.stateNLS,type:res.data[0].dataelements.typeNLS});
-                    },
-                    onFailure: function(errorRes) {
-                        onMyFailure(errorRes);
-                    }
-            });
+                return new Promise((onMyResolve, onMyFailure) => {
+                    WAFData.authenticatedRequest(`https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/v1/modeler/documents/${partId}`, {
+                        method: "GET",
+                        type: "json",
+                        timeout: 15000,
+                        onComplete: function (res, headerRes) {
+                            onMyResolve({ state: res.data[0].dataelements.stateNLS, type: res.data[0].dataelements.typeNLS });
+                        },
+                        onFailure: function (errorRes) {
+                            onMyFailure(errorRes);
+                        }
+                    });
+                }
+                )
             }
-        )}
         }
         widget.dragAndDropComp = dragAndDropComp;
         return dragAndDropComp;
