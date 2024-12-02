@@ -491,11 +491,10 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                         type: "json",
                         onComplete: function (dataRespParent, headerRespParent) {
                             console.log("dataRespParent", dataRespParent);
-                            dragAndDropComp.getDisplayValueForPhysicalProduct().then((valuesToDisplayForPhysicalProduct) => {
+                            dragAndDropComp.getDisplayValueForPhysicalProduct(dataRespParent.member[0].id).then((valuesToDisplayForPhysicalProduct) => {
                                 dataRespParent.member[0].state = valuesToDisplayForPhysicalProduct.state;
                                 dataRespParent.member[0].type = valuesToDisplayForPhysicalProduct.type;
                                 let valuesToDisplay = ["id", "title", "description", "type", "revision", "state", "owner", "organization", "collabspace", "partNumber", "cadorigin"];
-
                                 // if (dragAndDropComp.isCADObject) {
                                 //     valuesToDisplay.push("cadorigin");
                                 // }
@@ -525,7 +524,6 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
 
                                 filteredData = extractValues(droppedData, valuesToDisplay);
                                 console.log("filteredData", filteredData);
-
                                 // Add filteredData to the object in dragAndDropComp.tableData where parentID matches the id in filteredData
                                 dragAndDropComp.tableData.forEach(item => {
                                     if (item.parentID === filteredData.id) {
