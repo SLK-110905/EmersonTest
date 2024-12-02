@@ -181,6 +181,7 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                 });
             }, showDroppedObjDetails: function (dataResp3, valuesToDisplay) {
                 dragAndDropComp.getDisplayValueForPhysicalProduct(dataResp3.member[0].id).then((displayValue) => {
+                    console.log("displayValue For Physical Product", displayValue);
                     dataResp3.member[0].state = displayValue.state;
                     dataResp3.member[0].type = displayValue.type;
                 let droppedData = {};
@@ -541,7 +542,6 @@ define("EmersonTest/components/dragAndDrop", ["DS/DataDragAndDrop/DataDragAndDro
                     type: "json",
                     timeout:15000,
                     onComplete: function(res, headerRes) {
-                        console.log("Response"+res);
                         onMyResolve({state:res.data[0].dataelements.stateNLS,type:res.data[0].dataelements.typeNLS});
                     },
                     onFailure: function(errorRes) {
