@@ -12,6 +12,8 @@ define("EmersonTest/scripts/Main", [
     function (DataDragAndDroplib, WAFData,dragAndDropComp) {
 
         var myWidget = {
+
+            securityContexturl:"https://oi000186152-us1-space.3dexperience.3ds.com/enovia/resources/modeler/pno/person?current=true&select=collabspaces",
             
             onLoad: function () {
                 let securitycontextpreference = {
@@ -151,7 +153,7 @@ define("EmersonTest/scripts/Main", [
                     }
                 });
             },
-            getSecurityContext: function (csrfTokenName, csrfTokenValue) {
+            getSecurityContext: function () {
                 console.log("Getting Security Context");
                 return new Promise((resolve, reject) => {
                     WAFData.authenticatedRequest(myWidget.securityContexturl, {
