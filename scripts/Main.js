@@ -19,7 +19,7 @@ define("EmersonTest/scripts/Main", [
                 let securitycontextpreference = {
                     name: "securitycontext",
                     type: "list",
-                    label: "Security Context",
+                    label: "Credentials",
                     options: [],
                     defaultValue: "VPLMProjectLeader.0000000001.Micro Motion",
                 };
