@@ -37,9 +37,11 @@ define("EmersonTest/scripts/Main", [
 
                         })
                     });
+                    widget.addPreference(securitycontextpreference);
+                    console.log("widget.getValue()--"+widget.getValue("securitycontext"));
                 });
-                widget.addPreference(securitycontextpreference);
-                console.log("widget.getValue()--"+widget.getValue("securitycontext"));
+                
+                
 
                 // alert("In ON load 3");
                 dragAndDropComp.showDroppable();
