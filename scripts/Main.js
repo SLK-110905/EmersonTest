@@ -14,6 +14,31 @@ define("EmersonTest/scripts/Main", [
         var myWidget = {
             
             onLoad: function () {
+                let securitycontextpreference = {
+                    name: "securitycontext",
+                    type: "list",
+                    label: "Security Context",
+                    options: [],
+                    defaultValue: "VPLMProjectLeader.0000000001.Micro Motion",
+                };
+                myWidget.getSecurityContext().then((res) => {
+                    let collabspaces = res.collabspaces;
+                    collabspaces.forEach((collabspace) => {
+                        let organization = collabspace.name.trim();
+                        let couples = collabspace.couples;
+                        couples.forEach((couple) => {
+                            const SecurityContextStr = couple.role.name + "." + couple.organization.name + "." + organization;
+                            securitycontextpreference.options.push({
+                                value: SecurityContextStr,
+                                label: SecurityContextStr
+                            });
+
+                        })
+                    });
+                });
+                widget.addPreference(securitycontextpreference);
+                console.log("widget.getValue()--"+widget.getValue("securitycontext"));
+
                 // alert("In ON load 3");
                 dragAndDropComp.showDroppable();
 
@@ -125,6 +150,24 @@ define("EmersonTest/scripts/Main", [
 
                     }
                 });
+            },
+            getSecurityContext: function (csrfTokenName, csrfTokenValue) {
+                console.log("Getting Security Context");
+                return new Promise((resolve, reject) => {
+                    WAFData.authenticatedRequest(myWidget.securityContexturl, {
+                        method: "Get",
+                        timeout: 1500000,
+                        type: "json",
+                        onComplete: function (res, headerRes) {
+                            console.log("Res--" + res)
+                            resolve(res);
+                        },
+                        onFailure(err, errhead) {
+                            console.log(err);
+                            reject(err);
+                        }
+                    });
+                })
             }
 
 
