@@ -17,11 +17,11 @@ define("EmersonTest/scripts/Main", [
             
             onLoad: function () {
                 let securitycontextpreference = {
-                    name: "securitycontext",
+                    name: "Credentials",
                     type: "list",
                     label: "Credentials",
                     options: [],
-                    defaultValue: "VPLMProjectLeader.0000000001.Micro Motion",
+                    defaultValue: "",
                 };
                 myWidget.getSecurityContext().then((res) => {
                     let collabspaces = res.collabspaces;
@@ -30,16 +30,17 @@ define("EmersonTest/scripts/Main", [
                         let couples = collabspace.couples;
                         couples.forEach((couple) => {
                             const SecurityContextStr = couple.role.name + "." + couple.organization.name + "." + organization;
+                            const SecurityContextLbl = organization.replace("MSOL-","") + " - " + couple.organization.title + " - " + couple.role.nls
                             securitycontextpreference.options.push({
                                 value: SecurityContextStr,
-                                label: SecurityContextStr
+                                label: SecurityContextLbl
                             });
-
+    
                         })
                     });
+                    securitycontextpreference.defaultValue = securitycontextpreference.options[0].value;
                     widget.addPreference(securitycontextpreference);
-                    console.log("widget.getValue()--"+widget.getValue("securitycontext"));
-                });
+                    myWidget.ctx = widget.getValue("Credentials");
                 
                 
 
