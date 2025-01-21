@@ -41,6 +41,8 @@ define("EmersonTest/scripts/Main", [
                     securitycontextpreference.defaultValue = securitycontextpreference.options[0].value;
                     widget.addPreference(securitycontextpreference);
                     myWidget.ctx = widget.getValue("Credentials");
+                }
+            );
                 
                 
 
